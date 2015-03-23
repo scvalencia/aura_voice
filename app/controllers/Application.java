@@ -22,14 +22,12 @@ public class Application extends Controller {
     public static Result token(String path) {
         return ok("");
     }
-    
+
     public static Result uploadFile(Long id) {
         ObjectNode result = Json.newObject();
 
         Http.MultipartFormData body = request().body().asMultipartFormData();
-        System.out.println("BODY");
         Http.MultipartFormData.FilePart uploadFilePart = body.getFile("upload");
-        System.out.println("FILE");
         if(uploadFilePart != null) {
             SoundCloudAPI s = new SoundCloudAPI();
             try {
